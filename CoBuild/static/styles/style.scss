@@ -1,0 +1,220 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Degular Display", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+  transition: 200ms ease;
+}
+@font-face {
+  font-family: Recoleta;
+  src: url(../fonts/RecoletaSemiBold.woff2);
+}
+@font-face {
+  font-family: Degular Display;
+  src: url(../fonts/Degular-Medium.1d52003d.woff2);
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  padding: 0 80px;
+}
+$primary: #0e6ffc;
+$secondary: #41416e;
+
+$secondary-font: "Recoleta";
+a{
+  text-decoration: none;
+  color: $secondary;
+}
+.topnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+  position: sticky;
+  top: 0px;
+  background: #fff;
+  z-index: 2;
+  padding: 10px;
+  transition: 200ms ease-in-out;
+  border-bottom: 1.5px dashed #fafafa;
+  .logo {
+    height: 40px;
+    margin-right: 8px;
+  }
+  h1 {
+    font-weight: 400;
+    text-transform: capitalize;
+  }
+  .search {
+    display: flex;
+    align-items: center;
+    position: relative;
+    img {
+      height: 20px;
+      width: 20px;
+      position: absolute;
+      left: 20px;
+    }
+    input {
+      width: 600px;
+      height: 32px;
+      padding: 24px 54px;
+      border: 2px solid #f9f9f9;
+      outline: none;
+      border-radius: 30px;
+      transition: 200ms ease;
+      font-size: 15px;
+      &:focus {
+        border: 2px solid $secondary;
+      }
+    }
+  }
+  .details{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    .avatar {
+        height: 40px;
+        width: 40px;
+    }
+    p{
+        font-size: 15px;
+    }
+  }
+  .actions{
+    .logout{
+        color: red;
+        background: transparent;
+        border: none;
+        padding: 8px;
+        text-decoration: none;
+    }
+  }
+}
+.Header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2em;
+  p {
+    color: $primary;
+    margin-bottom: 6px;
+    text-transform: capitalize;
+  }
+  h1 {
+    font-size: 24px;
+    font-weight: 500;
+  }
+  
+}
+main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+  .right {
+    flex: 1;
+    padding: 20px;
+  }
+  .middle {
+    flex: 2;
+    .header{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1em;
+    }
+    .post{
+      padding: 32px;
+      border-radius: 8px;
+      border: 2px solid #fafafa;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      .post-head{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .username{
+          color: #41416e;
+          padding: 4px 8px;
+          font-size: 18px;
+        }
+        .actions{
+          .action{
+            margin-left: 16px;
+          }
+        }
+      }
+      h5{
+        color: #41416e;
+        font-size: 24px;
+      }
+    }
+  }
+  .left {
+    flex: 1;
+    h2 {
+      margin-bottom: 1em;
+      font-weight: 500;
+    }
+    
+    .card {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-direction: column;
+      width: 100%;
+      border: 2px solid #fafafa;
+      margin-bottom: 1em;
+      padding: 10px;
+      border-radius: 10px;
+      gap: 0.5em;
+      h4 {
+        font-weight: 500;
+      }
+      p {
+        color: slategray;
+        font-size: 12px;
+      }
+      .total {
+        font-size: 18px;
+            font-weight: 600;
+            color: $primary;  
+      }
+      &:hover{
+        border: 2px solid #41416e;
+        background-color: #fafafa;
+      }
+    }
+  }
+}
+.button {
+  padding: 10px 32px;
+  color: #fff;
+  background: transparent;
+  border-radius: 25px;
+  background-color: #0e6ffc;
+  text-align: center;
+  cursor: pointer;
+  transition: 200ms ease;
+}
+.secondary-button {
+  padding: 10px 32px;
+  color: #fff;
+  background: transparent;
+  border-radius: 25px;
+  background-color: #41416e;
+  text-align: center;
+  cursor: pointer;
+  transition: 200ms ease;
+  border: none;
+  margin-bottom: 1.5em;
+}

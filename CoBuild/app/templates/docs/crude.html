@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <form method = 'POST' action = '' class = 'login'>
+        {% csrf_token %}
+        {{space.as_p}}
+    <input type = 'submit' value = 'Submit'>
+    </form>
+{% endblock content %}
+

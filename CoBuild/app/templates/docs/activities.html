@@ -1,0 +1,14 @@
+<h3>Activites<h3>
+    <hr>
+    {% for activity in activities %}
+        <div>
+            <p><a href = "{% url 'useraccount' activity.user.id %}">@{{activity.user}}</a> {{activity.created|timesince}}</p>
+            <p>attended to "{{activity.project}}"</p>
+
+            <p>{{chat}}</p>
+            {% if request.user == activity.user %}
+                <a href ="{% url 'clearchat' activity.id %}">Discard<a>
+            {% endif %}
+            <hr>
+        <div>
+    {% endfor %}

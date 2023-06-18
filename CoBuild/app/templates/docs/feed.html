@@ -1,0 +1,21 @@
+<div>
+    {% for project in projects %}
+        <div class="post">
+            <div class="post-head">
+                <a href = "{% url 'useraccount' project.admin.id %}" class="username">@{{project.admin.username}}</a>
+            <div class="actions">
+                {% if request.user == project.admin %}
+            <a href = "{% url 'update' project.id %}" class="action">Update Class</a>
+            <a href = "{% url 'delete' project.id %}" class="action">Delete Class</a>
+
+            {% endif %}
+            </div>
+            
+            </div>
+            
+            <h5> {% comment %} {{project.id}} --  {% endcomment %} <a href = "{% url 'project' project.id %}">{{project.name}}</a></h5>
+            <small><i><b>Class</b></i> - {{project.task.name}}</small>
+        </div>
+    {% endfor %}
+</div>
+

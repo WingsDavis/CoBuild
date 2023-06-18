@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+{% if creds == 'credlogin' %}
+<div>
+    <form method = 'POST' action = '' class = 'login'>
+        {% csrf_token %}
+        
+    <label>Username: </label>
+    <input type = 'text' name = 'username' placeholder "Enter Username">
+
+    <label>Password: </label>
+    <input type = 'password' name= 'password' placeholder = "Enter Password">
+
+    <input type='submit' value = 'Login'>
+
+    <form class = 'login'>
+       <p>Haven't signed up yet?</p>
+       <a href = "{% url 'crednewuser' %}">Sign Up</a> 
+</div>
+{% else %}
+<div>
+    <form method = 'POST' action = '' class = 'login'>
+        {% csrf_token %}
+        {{userform.as_p}} 
+        
+        <input type = 'submit' value = 'Register'>
+
+        <p>Already signed up?</p>
+       <a href = "{% url 'credlogin' %}">Login</a>
+    </form>
+</div>
+{% endif %}
+
+{% endblock content %}
+

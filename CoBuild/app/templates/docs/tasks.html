@@ -1,0 +1,9 @@
+<h2>Browse Courses</h2>
+    <div>
+        <a href = "{% url 'module' %}"><button class="secondary-button">All Courses</button></a>
+    </div>
+    {% for task in tasks %}
+        <div>
+            <a href = "{% url 'module' %}?q={{task.name}}" class="card">{{task.name}}</a>
+        </div>
+    {% endfor %}

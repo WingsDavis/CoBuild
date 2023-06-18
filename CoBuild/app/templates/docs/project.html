@@ -1,0 +1,98 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<style>
+    .project{
+        display : grid;
+        grid-template-columns : 3fr 1fr;
+    }
+</style>
+
+<div class = 'project'>
+
+    <div>
+        <h1>{{project.name}}</h1>
+
+        <p style="margin-bottom: 1em">{{project.description}}</p>
+
+        <div class = 'comments'>
+            <h3 style="margin-bottom: 1em">Attendance</h3>
+            <h5>{{student_count}} Students Signed out of 250</h5>
+
+            {% for chat in chats %}
+            
+                <div style="padding:5px; padding-bottom: 10px; border: 2px solid dashed #fafafa;">
+                    {% if request.user == chat.user %}
+                    <a href ="{% url 'clearchat' chat.id %}" style="margin-right: 16px;">Discard<a>
+                    {% endif %}
+                    <small>@{{chat.user}} {{chat.created|timesince}} ago</small>
+                    <b><p style="font-size:18px;">{{chat.body}}</p></b>
+                </div>
+            {% endfor %}
+        </div>
+
+        {% if request.user.is_authenticated %}
+        <div class = 'comment'>
+            <form method = 'POST' action = ''>
+                {% csrf_token %}
+            <input type = 'text' name = 'body' placeholder = 'Type your info here......' style="padding: 20px; width: 50%; border:2px solid grey; border-radius:25px; position: fixed; bottom: 20px;">
+            <p id="location"></p>
+            <script>
+                // Request user's location
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, handleError);
+  } else {
+    console.log("Geolocation is not supported by this browser.");
+  }
+  
+  // Callback function to handle successful retrieval of location
+  function showPosition(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    console.log("Latitude: " + latitude + ", Longitude: " + longitude);
+  
+    // Display the location on the webpage
+    var locationElement = document.getElementById("location");
+    locationElement.innerHTML = "Latitude: " + latitude + ", Longitude: " + longitude;
+  }
+  
+  // Callback function to handle errors in retrieving location
+  function handleError(error) {
+    switch (error.code) {
+      case error.PERMISSION_DENIED:
+        console.log("User denied the request for Geolocation.");
+        break;
+      case error.POSITION_UNAVAILABLE:
+        console.log("Location information is unavailable.");
+        break;
+      case error.TIMEOUT:
+        console.log("The request to get user location timed out.");
+        break;
+      case error.UNKNOWN_ERROR:
+        console.log("An unknown error occurred.");
+        break;
+    }
+  }
+  
+            </script>
+        </form>
+        </div>
+        {% endif %}
+    </div>
+    
+    <div>
+        <h3>Index-Numbers</h3> <h5>{{student_count}} Students Signed</h5>
+        <hr>
+        
+        {% for cobuilder in followers %}
+            <div>
+                <p>@{{cobuilder.username}}</p>
+            </div>
+        {% endfor %}
+    <div>
+
+</div>
+{% endblock content %}
+
+

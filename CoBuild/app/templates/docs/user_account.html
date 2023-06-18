@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<h1>{{profile.username}}</h1>
+
+<style>
+    .user{
+        display : grid;
+        grid-template-columns : 1fr 3fr 2fr;
+    }
+</style>
+
+<div class = 'user'>
+   
+    <div>
+        {% include 'docs/tasks.html' %}
+    </div>
+
+    <div>
+        {% include 'docs/feed.html' %}
+    </div>
+
+    <div>
+        {% include 'docs/activities.html' %}
+    </div>
+
+</div>
+
+{% endblock content %}

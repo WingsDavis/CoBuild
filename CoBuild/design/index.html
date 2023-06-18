@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static '../static/styles/style.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static '../static/styles/authentication.css' %}">
+    <title>e - Sign. Enjoy a digitize attendance experience</title>
+  <body>
+
+    {% include 'neutral.html' %}
+
+    {% if messages %}
+        <ul class = 'messages'>
+            {% for message in messages %}
+                <li></li>{{message}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% block content %}
+
+            <style>
+            .module{
+                display: grid;
+                grid-template-columns: 1fr 3fr;
+            }
+            </style>
+  
+    <main>
+        {% include 'docs/tasks.html' %}
+    </main>
+  
+    <div>
+        <h5 style = 'margin-bottom:2em'>{{project_count}} Courses Available</h5>
+        <a href = "{% url 'create' %}" class = 'secondary-button'>Create Course</a>
+        <div>
+            {% include 'docs/feed.html' %}
+        </div>
+    </div>
+
+  </div>
+    
+    <div style="text-align: center;">
+        <h1 style="margin-top: 1em;">School Attendance System</h1>
+        <p style="margin-bottom:2em;">Join your peers in the new school atendance experience - Online</p>
+
+        <div>
+            <form method = 'POST' action = '' class = 'login'>
+                {% csrf_token %}
+                {{userform.as_p}} 
+                
+                <input type = 'submit' value = 'Register'>
+        
+                <p>Already signed up?</p>
+               <a href = "{% url 'credlogin' %}">Login</a>
+            </form>
+        </div>
+    </div>
+
+    {% endblock content %}
+  </body>
+</html>

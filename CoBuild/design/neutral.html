@@ -1,0 +1,22 @@
+<nav class="topnav">
+    <!-- <img src="" alt="logo" class="logo"> -->
+    <a href="/" style="font-family: recoleta; font-size:24px">eSign</a>
+    <form method="GET" action="{% url 'module' %}" class="search">
+        <img src="/static/images/search_96px.png" alt="logo" class="logo">
+        <input type="text" name='q' placeholder="Search courses .........">
+    </form>
+    <div class="details">
+        <img src="/static/images/Ellipse.png" alt="" class="avatar">
+        <span>
+            <p class="title">{{request.user}}</p>
+            <p class="subtitle">{{project.task.name}}</p>
+        </span>
+    </div>
+    <div class="actions">
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'credlogout' %}" class="logout">Logout</a>
+        {% else %}
+        <a href="{% url 'credlogin' %}" class="logout">Login</a>
+        {% endif %}
+    </div>
+</nav>

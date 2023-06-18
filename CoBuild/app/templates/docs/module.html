@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<main>
+
+    <div class="left">
+        {% include 'docs/tasks.html' %}
+    </div>
+
+    <div class="middle">
+       <div class ="header">
+        <h5>{{project_count}} Courses Available</h5>
+        <a href = "{% url 'create' %}" class="button">Create Course</a>
+       </div>
+        {% include 'docs/feed.html' %}
+    </div>
+
+    <div class="right">
+        {% include 'docs/activities.html' %}
+    </div>
+</main>
+{% endblock content %}
